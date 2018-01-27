@@ -59,6 +59,7 @@
             }
         };
 
+        // Initialize form data
         let init = () => {
 
             let promises = {
@@ -66,21 +67,28 @@
                 exchange: OpenExchangeRates.get()
             };
 
+            /**
+             * Getting countries and exchange rates asynchronously. Wait for all promises to resolve.
+             */
             $q.all(promises).then(results => {
 
+                // Setting money.js
                 fx.base = results.exchange.base;
                 fx.rates = results.exchange.rates;
 
+                // Filtering countries without currency rate
                 let availableCountries = _.filter(results.countries, country => {
                     return _.has(results.exchange.rates, _.transform(country.currencies, (result, currency) => {
                         result.push(currency.code);
                     }, []))
                 });
 
+                // Transforming countries list
                 vm.countries = _.transform(availableCountries, (result, country) => {
                     result.push(new CountryFactory(country));
                 });
 
+                // Setting default form parameters
                 vm.data.from.country.obj = _.first(vm.countries);
                 vm.data.to.country.obj = _.last(vm.countries);
                 vm.data.from.amount.value = '100.00';
@@ -91,6 +99,7 @@
             });
         };
 
+        // Here we go!
         init();
     }
 

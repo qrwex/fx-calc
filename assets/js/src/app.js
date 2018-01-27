@@ -8,7 +8,7 @@
     AppRun.$inject = ['$rootScope'];
 
     function AppRun($rootScope) {
-        $rootScope._ = _;
+        $rootScope._ = _; // make lodash accessible in a views
     }
 
     angular.module('app').run(AppRun)
