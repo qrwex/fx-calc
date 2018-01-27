@@ -50,6 +50,14 @@
             getCurrencies() {
                 return this.data.currencies;
             }
+
+            /**
+             * Get primary currency
+             * @returns {object}
+             */
+            getPrimaryCurrency() {
+                return _.first(this.data.currencies);
+            }
         }
 
         return Country;

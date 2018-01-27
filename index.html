@@ -43,8 +43,8 @@
                        data-ng-change="vm.data.from.amount.onchange()">
                 <div class="input-group-append">
                     <label for="from-amount" class="input-group-text"
-                           title="{{ _.first(vm.data.from.country.obj.getCurrencies()).name }}">
-                        {{ _.first(vm.data.from.country.obj.getCurrencies()).code }}
+                           title="{{ vm.data.from.country.obj.getPrimaryCurrency().name }}">
+                        {{ vm.data.from.country.obj.getPrimaryCurrency().code }}
                     </label>
                 </div>
             </div>
@@ -64,8 +64,8 @@
                        data-ng-change="vm.data.to.amount.onchange()">
                 <div class="input-group-append">
                     <label for="to-amount" class="input-group-text"
-                           title="{{ _.first(vm.data.to.country.obj.getCurrencies()).name }}">
-                        {{ _.first(vm.data.to.country.obj.getCurrencies()).code }}
+                           title="{{ vm.data.to.country.obj.getPrimaryCurrency().name }}">
+                        {{ vm.data.to.country.obj.getPrimaryCurrency().code }}
                     </label>
                 </div>
             </div>

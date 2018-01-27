@@ -25,8 +25,8 @@
                     },
                     calculate() {
                         let amtFrom = vm.data.to.amount.value,
-                            currFrom = _.first(vm.data.to.country.obj.getCurrencies()).code,
-                            currTo = _.first(vm.data.from.country.obj.getCurrencies()).code;
+                            currFrom = vm.data.to.country.obj.getPrimaryCurrency().code,
+                            currTo = vm.data.from.country.obj.getPrimaryCurrency().code;
 
                         this.value = $filter('number')(
                             fx(amtFrom).from(currFrom).to(currTo), 2
@@ -48,8 +48,8 @@
                     },
                     calculate() {
                         let amtFrom = vm.data.from.amount.value,
-                            currFrom = _.first(vm.data.from.country.obj.getCurrencies()).code,
-                            currTo = _.first(vm.data.to.country.obj.getCurrencies()).code;
+                            currFrom = vm.data.from.country.obj.getPrimaryCurrency().code,
+                            currTo = vm.data.to.country.obj.getPrimaryCurrency().code;
 
                         this.value = $filter('number')(
                             fx(amtFrom).from(currFrom).to(currTo), 2
