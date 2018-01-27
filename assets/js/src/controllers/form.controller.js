@@ -29,7 +29,7 @@
                             currFrom = _.first(vm.data.to.country.obj.getCurrencies()).code,
                             currTo = _.first(vm.data.from.country.obj.getCurrencies()).code;
 
-                        this.value = parseFloat(fx(amtFrom).from(currFrom).to(currTo)).toFixed(2) || 0;
+                        this.value = parseFloat(fx(amtFrom).from(currFrom).to(currTo) || '0').toFixed(2);
                     }
                 },
             },
@@ -51,7 +51,7 @@
                             currFrom = _.first(vm.data.from.country.obj.getCurrencies()).code,
                             currTo = _.first(vm.data.to.country.obj.getCurrencies()).code;
 
-                        this.value = parseFloat(fx(amtFrom).from(currFrom).to(currTo)).toFixed(2) || 0;
+                        this.value = parseFloat(fx(amtFrom).from(currFrom).to(currTo) || '0').toFixed(2);
                     }
                 },
             }
