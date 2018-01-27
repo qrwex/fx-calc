@@ -1,21 +1,20 @@
 ((() => {
 
-    FormCtrl.$inject = ['OpenExchangeRates', 'RestCountries', '$q', 'CountryFactory'];
+    FormCtrl.$inject = ['OpenExchangeRates', 'RestCountries', '$q', 'CountryFactory', '$filter'];
 
-    function FormCtrl(OpenExchangeRates, RestCountries, $q, CountryFactory) {
+    function FormCtrl(OpenExchangeRates, RestCountries, $q, CountryFactory, $filter) {
 
         let vm = this;
 
         /**
          * Form data
-         * todo refactor this monster
+         * @todo refactor this monster
          */
         vm.data = {
             from: {
                 country: {
                     obj: {},
                     onchange() {
-                        // this.call;
                         vm.data.to.amount.calculate();
                     }
                 },
@@ -29,7 +28,9 @@
                             currFrom = _.first(vm.data.to.country.obj.getCurrencies()).code,
                             currTo = _.first(vm.data.from.country.obj.getCurrencies()).code;
 
-                        this.value = parseFloat(fx(amtFrom).from(currFrom).to(currTo) || '0').toFixed(2);
+                        this.value = $filter('number')(
+                            fx(amtFrom).from(currFrom).to(currTo), 2
+                        );
                     }
                 },
             },
@@ -46,12 +47,13 @@
                         vm.data.from.amount.calculate();
                     },
                     calculate() {
-
                         let amtFrom = vm.data.from.amount.value,
                             currFrom = _.first(vm.data.from.country.obj.getCurrencies()).code,
                             currTo = _.first(vm.data.to.country.obj.getCurrencies()).code;
 
-                        this.value = parseFloat(fx(amtFrom).from(currFrom).to(currTo) || '0').toFixed(2);
+                        this.value = $filter('number')(
+                            fx(amtFrom).from(currFrom).to(currTo), 2
+                        );
                     }
                 },
             }
