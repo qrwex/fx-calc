@@ -1,0 +1,51 @@
+{
+    "name": "fx-calc",
+    "version": "1.0.0",
+    "description": "Create a simple, responsive currency exchange application using chosen front-end and javascript framework. Application should validate and format user input, be tested and come with setup documentation.",
+    "main": "index.html",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "serve": "node ./node_modules/http-server/bin/http-server .",
+        "build": "node ./node_modules/gulp/bin/gulp.js build"
+    },
+    "author": "",
+    "license": "ISC",
+    "babel": {
+        "presets": [
+            "env"
+        ]
+    },
+    "paths": {
+        "app": {
+            "scripts": {
+                "in": [
+                    "./assets/js/src/**/*"
+                ],
+                "out": {
+                    "path": "./assets/js/dist",
+                    "filename": "app.min.js"
+                }
+            }
+        }
+    },
+    "dependencies": {
+        "angular": "^1.6.8",
+        "angular-numeric-directive": "^1.0.0",
+        "angular-storage": "0.0.15",
+        "babel-core": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-register": "^6.26.0",
+        "bootstrap": "^4.0.0",
+        "del": "^3.0.0",
+        "gulp": "^3.9.1",
+        "gulp-babel": "^7.0.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-sourcemaps": "^2.6.4",
+        "gulp-uglify": "^3.0.0",
+        "http-server": "^0.11.1",
+        "jquery": "^3.3.1",
+        "lodash": "^4.17.4",
+        "money": "^0.2.0",
+        "popper.js": "^1.12.9"
+    }
+}

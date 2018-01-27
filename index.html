@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app" data-ng-cloak>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/angular-storage/dist/angular-storage.min.js"></script>
+    <script src="./node_modules/angular-numeric-directive/src/numeric-directive.js"></script>
+    <script src="./node_modules/lodash/lodash.min.js"></script>
+    <script src="./node_modules/money/money.js"></script>
+    <script src="./assets/js/dist/app.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+<main class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>
+                Send money
+            </h1>
+            <hr/>
+        </div>
+    </div>
+    <form ng-controller="FormCtrl as vm" class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="from-country">Sending from</label>
+                </div>
+                <select id="from-country" class="custom-select form-control"
+                        data-ng-model="vm.data.from.country.obj" data-ng-change="vm.data.from.country.onchange()"
+                        data-ng-options="country.getName() for country in vm.countries">
+                    <option value="" disabled>Select country</option>
+                </select>
+                <input data-numeric data-min="0" data-decimals="2" id="from-amount" type="text" class="form-control"
+                       data-ng-model="vm.data.from.amount.value"
+                       data-ng-change="vm.data.from.amount.onchange()">
+                <div class="input-group-append">
+                    <label for="from-amount" class="input-group-text"
+                           title="{{ _.first(vm.data.from.country.obj.getCurrencies()).name }}">
+                        {{ _.first(vm.data.from.country.obj.getCurrencies()).code }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="to-country">Sending to</label>
+                </div>
+                <select id="to-country" class="custom-select form-control"
+                        data-ng-model="vm.data.to.country.obj" data-ng-change="vm.data.to.country.onchange()"
+                        data-ng-options="country.getName() for country in vm.countries">
+                    <option value="" disabled>Select country</option>
+                </select>
+                <input data-numeric data-min="0" data-decimals="2" id="to-amount" type="text" class="form-control"
+                       data-ng-model="vm.data.to.amount.value"
+                       data-ng-change="vm.data.to.amount.onchange()">
+                <div class="input-group-append">
+                    <label for="to-amount" class="input-group-text"
+                           title="{{ _.first(vm.data.to.country.obj.getCurrencies()).name }}">
+                        {{ _.first(vm.data.to.country.obj.getCurrencies()).code }}
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+</body>
+</html>
