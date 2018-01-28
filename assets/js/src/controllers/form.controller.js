@@ -7,6 +7,18 @@
         let vm = this;
 
         /**
+         * Number of decimal places to round the number to.
+         * @type {number}
+         */
+        vm.fractionSize = 2;
+
+        /**
+         * Minimum value
+         * @type {number}
+         */
+        vm.minimum = 0;
+
+        /**
          * Form data
          * @todo refactor this monster
          */
@@ -25,11 +37,11 @@
                     },
                     calculate() {
                         let amtFrom = vm.data.to.amount.value,
-                            currFrom = vm.data.to.country.obj.getPrimaryCurrency().code,
-                            currTo = vm.data.from.country.obj.getPrimaryCurrency().code;
+                            currFrom = vm.data.to.country.obj.getPrimaryCurrency().getCode(),
+                            currTo = vm.data.from.country.obj.getPrimaryCurrency().getCode();
 
                         this.value = $filter('number')(
-                            fx(amtFrom).from(currFrom).to(currTo), 2
+                            fx(amtFrom).from(currFrom).to(currTo), vm.fractionSize
                         );
                     }
                 },
@@ -48,11 +60,11 @@
                     },
                     calculate() {
                         let amtFrom = vm.data.from.amount.value,
-                            currFrom = vm.data.from.country.obj.getPrimaryCurrency().code,
-                            currTo = vm.data.to.country.obj.getPrimaryCurrency().code;
+                            currFrom = vm.data.from.country.obj.getPrimaryCurrency().getCode(),
+                            currTo = vm.data.to.country.obj.getPrimaryCurrency().getCode();
 
                         this.value = $filter('number')(
-                            fx(amtFrom).from(currFrom).to(currTo), 2
+                            fx(amtFrom).from(currFrom).to(currTo), vm.fractionSize
                         );
                     }
                 },

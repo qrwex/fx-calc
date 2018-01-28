@@ -1,8 +1,8 @@
 (() => {
 
-    CountryFactory.$inject = [];
+    CountryFactory.$inject = ['CurrencyFactory'];
 
-    function CountryFactory() {
+    function CountryFactory(CurrencyFactory) {
 
         /**
          * @returns {Country}
@@ -15,6 +15,12 @@
              * @returns {Country}
              */
             constructor(data) {
+
+                // Create currency item
+                data.currencies = _.transform(data.currencies, (result, currency) => {
+                    result.push(new CurrencyFactory(currency));
+                });
+
                 this.data = data;
                 return this;
             }

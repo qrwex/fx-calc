@@ -38,13 +38,14 @@
                         data-ng-options="country.getName() for country in vm.countries">
                     <option value="" disabled>Select country</option>
                 </select>
-                <input data-numeric data-min="0" data-decimals="2" id="from-amount" type="text" class="form-control"
+                <input data-numeric data-min="vm.minimum" data-decimals="vm.fractionSize" id="from-amount" type="text"
+                       class="form-control"
                        data-ng-model="vm.data.from.amount.value"
                        data-ng-change="vm.data.from.amount.onchange()">
                 <div class="input-group-append">
                     <label for="from-amount" class="input-group-text"
-                           title="{{ vm.data.from.country.obj.getPrimaryCurrency().name }}">
-                        {{ vm.data.from.country.obj.getPrimaryCurrency().code }}
+                           title="{{ vm.data.from.country.obj.getPrimaryCurrency().getName() }}">
+                        {{ vm.data.from.country.obj.getPrimaryCurrency().getCode() }}
                     </label>
                 </div>
             </div>
@@ -59,13 +60,14 @@
                         data-ng-options="country.getName() for country in vm.countries">
                     <option value="" disabled>Select country</option>
                 </select>
-                <input data-numeric data-min="0" data-decimals="2" id="to-amount" type="text" class="form-control"
+                <input data-numeric data-min="vm.minimum" data-decimals="vm.fractionSize" id="to-amount" type="text"
+                       class="form-control"
                        data-ng-model="vm.data.to.amount.value"
                        data-ng-change="vm.data.to.amount.onchange()">
                 <div class="input-group-append">
                     <label for="to-amount" class="input-group-text"
-                           title="{{ vm.data.to.country.obj.getPrimaryCurrency().name }}">
-                        {{ vm.data.to.country.obj.getPrimaryCurrency().code }}
+                           title="{{ vm.data.to.country.obj.getPrimaryCurrency().getName() }}">
+                        {{ vm.data.to.country.obj.getPrimaryCurrency().getCode() }}
                     </label>
                 </div>
             </div>
