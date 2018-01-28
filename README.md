@@ -11,3 +11,7 @@ Build application:
 Run http server:
 
 ``$ npm run serve``
+
+Run tests:
+
+``$ npm test``
