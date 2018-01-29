@@ -40,8 +40,8 @@
                             currFrom = vm.data.to.country.obj.getPrimaryCurrency().getCode(),
                             currTo = vm.data.from.country.obj.getPrimaryCurrency().getCode();
 
-                        this.value = $filter('number')(
-                            fx(amtFrom).from(currFrom).to(currTo), vm.fractionSize
+                        this.value = $filter('formatNumber')(
+                            fx(amtFrom).from(currFrom).to(currTo) || 0, vm.fractionSize
                         );
                     }
                 },
@@ -63,8 +63,8 @@
                             currFrom = vm.data.from.country.obj.getPrimaryCurrency().getCode(),
                             currTo = vm.data.to.country.obj.getPrimaryCurrency().getCode();
 
-                        this.value = $filter('number')(
-                            fx(amtFrom).from(currFrom).to(currTo), vm.fractionSize
+                        this.value = $filter('formatNumber')(
+                            fx(amtFrom).from(currFrom).to(currTo) || 0, vm.fractionSize
                         );
                     }
                 },
