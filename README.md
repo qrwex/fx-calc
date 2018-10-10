@@ -1,4 +1,4 @@
-# Currency exchange application
+# Currency Exchange Application
 
 Install dependencies:
 
